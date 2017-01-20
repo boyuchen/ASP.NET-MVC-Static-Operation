@@ -1,0 +1,37 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+<div class="row" style="margin-top:50px;">
+    <div class="col-md-6">
+        <div>相关博文：<a href="http://shiyousan.com/post/635685973774173122" target="_blank">ASP.NET MVC 使用视图引擎实现页面静态化</a></div>
+        <hr />
+        <div>
+            @Ajax.ActionLink("使用HTML模板生成静态页面", "UseHtmlTemplateStatic", "Home", null, new AjaxOptions() { HttpMethod = "POST", OnSuccess = "OnSuccess" }, new { @class = "btn btn-primary btn-lg" })
+        </div>
+        <hr />
+        <div>
+            <a href="~/StaticTemplate/ArticleTemplate.html" target="_blank">点击浏览HTML模板页面</a>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div>相关博文：<a href="http://shiyousan.com/post/635686037177640853" target="_blank">ASP.NET MVC使用HTML模板进行静态化操作</a></div>
+        <hr />
+        <div>
+            @Ajax.ActionLink("使用视图引擎实现页面静态化", "UseViewEngineStatic", "Home", null, new AjaxOptions() { HttpMethod = "POST", OnSuccess = "OnSuccess" }, new { @class = "btn btn-primary btn-lg" })
+        </div>
+        <hr />
+        <div>
+            <a href="/Home/Article" target="_blank">点击浏览视图模板页面</a>
+        </div>
+    </div>
+</div>
+<div id="divMessage">
+</div>
+@section scripts{
+    <script type="text/javascript">
+        function OnSuccess(message) {
+            var msg = "<div class=\"alert alert-info\" role=\"alert\">" + message + "</div>";
+            $("#divMessage").prepend(msg);
+        }
+    </script>
+}
